@@ -14,7 +14,7 @@ Another option is to use `ffmpeg` directly. It will be able to do SRT HEVC with 
 
 Server will be running on [Termux](https://termux.dev/en/). Install it on your phone. Do not use Google Play version.
 
-Start Termux and run commands.
+Start Termux and run commands below.
 
 ## MediaMTX
 
