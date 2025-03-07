@@ -6,9 +6,9 @@ To achieve that we need a server that can run on Android and a video encoder.
 
 We'll be using [MediaMTX](https://github.com/bluenviron/mediamtx) as a server.
 
-For the video encoder we'll be using [`IRL Pro` app from Google Play](https://play.google.com/store/apps/details?id=app.irlpro.android). It can do SRT, HEVC, dynamic bitrate and bonding.
+For the video encoder we'll be using [`IRL Pro`](https://play.google.com/store/apps/details?id=app.irlpro.android). It can do SRT, HEVC, dynamic bitrate and bonding.
 
-Another option is to use `ffmpeg` in command line. It will be able to do SRT HEVC with no dynamic bitrate and no bonding.
+Another option is to use `ffmpeg` in Termux. It will be able to do SRT HEVC with no dynamic bitrate and no bonding.
 
 ## Termux
 
@@ -163,7 +163,7 @@ Tweak other ffmpeg options to your liking.
 
 ## References / Links
 
-- IRL Pro Discord threads
+- `IRL Pro` Discord threads
   - [RTMP Ingest](https://discord.com/channels/996502486535901306/1191179335479087104)
   - [Built-in RTMP Server that can be used as a source](https://discord.com/channels/996502486535901306/1056294460121690132)
-- This is sort of a continuation of this repo: https://github.com/dimadesu/termux-nginx-rtmp
+- This is sort of a continuation of this page that I wrote https://github.com/dimadesu/termux-nginx-rtmp
