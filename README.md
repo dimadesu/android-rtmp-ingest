@@ -12,9 +12,9 @@ Another option is to use `ffmpeg` in command line. It will be able to do SRT HEV
 
 ## Termux
 
-Server will be running on [Termux](https://termux.dev/en/). Install it on your phone. Do not use Google Play version.
+MediaMTX will be running on [Termux](https://termux.dev/en/). Install Termux on your phone. Do not use Google Play version.
 
-Start Termux and run commands below.
+Start Termux and copy-paste or type commands below.
 
 ## MediaMTX
 
