@@ -42,13 +42,13 @@ Run MediaMTX.
 
 ### (Optional) MediaMTX conflicts with Nginx
 
-Note. I am switching back and forth between Nginx and MediaMTX. If MediaMTX is failing to start that usually means port `1935` is taken by Nginx, so stop Nginx:
+I am switching back and forth between MediaMTX and Nginx. If MediaMTX is failing to start that usually means port `1935` is taken by Nginx, so stop Nginx:
 
 ```
 sv down nginx
 ```
 
-Check if that worked.
+Check if that Nginx is down.
 
 ```
 sv status nginx
@@ -115,31 +115,33 @@ As of March 2025 it doesn't have RTMP ingest feature, so this is a bit of a work
 
 Big thanks goes to `Supairyacht` user from `IRL Pro`'s Discord server for this idea.
 
-We'll be pushing into RTMP ingest and pulling HLS from MediaMTX. It can do this by default, no setup is needed.
+We'll be pushing into RTMP ingest of MediaMTX and pulling HLS. It can do this by default, no setup is needed.
 
 HLS is essentially an HTML page with a video in it.
 
-We'll create an overlay to display HLS feed in `IRL Pro` that will cover the whole phone camera video.
+We'll create an overlay to display HLS page in `IRL Pro` that will cover the whole phone camera video.
 
-The only major issue with this idea is that overlays have no audio, but you can get audio via phone's audio input or Bluetooth mic connected to the phone.
+The only major issue with this idea is that overlay have no audio. You can get audio via phone's audio input or Bluetooth mic connected to the phone.
 
-There will be delay of about 3 seconds for HLS feed, so you'll have to fix that in OBS that has SRT as Media source.
+There will be a delay of about 3 seconds for HLS video, so you'll have to fix that in OBS (that has SRT as Media source).
 
 ### Setup
 
-Add an overlay. Use this url for HLS:
+- Add an overlay in `IRL Pro`. This is the URL for your HLS:
 
-```
-http://localhost:8888/mystream
-```
+  ```
+  http://localhost:8888/mystream
+  ```
 
-Set you IRL Pro to send SRT HEVC.
+- Set you `IRL Pro` to send SRT HEVC.
 
-Go Live.
+- Go live in `IRL Pro`.
 
-Add audio delay of about 3000 ms in OBS that you use for SRT media source. Note that in OBS delay is not applied to audio monitoring only to recording or stream.
+- In OBS add audio delay of about 3000 ms. Note that in OBS delay is not applied to audio monitoring only to recording or a stream.
 
 ## ffmpeg
+
+I usually use `ffmpeg` with Nginx that is running a service. I think you can run another Termux tab if you want to make it work with MediaMTX.
 
 To encode HEVC with hardware accelation use MediaCodec options.
 
