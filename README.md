@@ -1,14 +1,14 @@
 # RTMP Ingest for Android. RTMP H264 to SRT H265 (aka HEVC)
 
-The goal is to send RTMP stream from an action camera (any RTMP feed really) to the server running on Android phone and then send SRT HEVC out.
+The goal is to send RTMP stream from an action camera (any RTMP feed really) to the server running on Android phone and use that a source for a video encoder (running on the same Android phone) to stream it as SRT HEVC.
 
 To achieve that we need a server that can run on Android and a video encoder.
 
-We'll be using [MediaMTX](https://github.com/bluenviron/mediamtx) as a server.
+We'll be using [MediaMTX](https://github.com/bluenviron/mediamtx) as a server (running in Termux).
 
-For the video encoder we'll be using [`IRL Pro`](https://irlpro.app). It can do SRT HEVC with dynamic bitrate and bonding.
+[`IRL Pro`](https://irlpro.app) as a video encoder. It can stream SRT HEVC with dynamic bitrate and bonding.
 
-Another option is to use `ffmpeg` in Termux. It allows SRT HEVC with no dynamic bitrate and no bonding.
+Another option is to use `ffmpeg` in Termux. It can do SRT HEVC with no dynamic bitrate and no bonding.
 
 ## Termux
 
@@ -24,8 +24,8 @@ Install `wget` to allow downloading MediaMTX.
 pkg install wget
 ```
 
-We need to grab `linux_arm64v8` version from one of releases https://github.com/bluenviron/mediamtx/releases.
-(Your phone can has a different architecture, but try this first.)
+We need to grab `linux_arm64v8` version from one of [MediaMTX releases](https://github.com/bluenviron/mediamtx/releases).
+(Your phone can have a different architecture, but try this first.)
 
 ```
 wget https://github.com/bluenviron/mediamtx/releases/download/v1.11.3/mediamtx_v1.11.3_linux_arm64v8.tar.gz
@@ -118,9 +118,9 @@ systemctl start mediamtx
 
 As of March 2025 `IRL Pro` doesn't have RTMP ingest feature, so this is a workaround.
 
-Big thanks goes to `Supairyacht` user from `IRL Pro`'s Discord server for this idea.
+Big thanks to `Supairyacht` user from `IRL Pro` Discord server for this idea.
 
-We'll be pushing into RTMP ingest of MediaMTX and pulling HLS from MediaMTX. It can do this by default. No setup needed.
+We'll be pushing into RTMP ingest of MediaMTX and pulling HLS from MediaMTX. MediaMTX can do without any extra setup.
 
 HLS is essentially an HTML page with a video in it.
 
@@ -128,9 +128,9 @@ We'll create an overlay to display HLS page in `IRL Pro`. It can cover the whole
 
 ### Audio
 
-The only major issue with this idea is that overlays have no audio. You can get audio via phone's audio input or Bluetooth mic connected to the phone.
+The issue with this idea is that overlays have no audio. You can get audio via phone's audio input or Bluetooth mic connected to the phone.
 
-There will be a delay of about 3 seconds between HLS video and audio, so you'll have to fix that in OBS (that has SRT media source).
+There will be a delay of about 3 seconds between HLS video and phone audio, so you'll have to fix that in OBS (that has SRT media source).
 
 ### Setup `IRL Pro`
 
@@ -140,7 +140,7 @@ There will be a delay of about 3 seconds between HLS video and audio, so you'll 
   ```
 - Setup your `IRL Pro` to stream SRT HEVC.
 - Start your stream in `IRL Pro`.
-- In OBS add audio delay of about 3000 ms. (Note in OBS delay is not applied to audio monitoring only to recording or a stream.)
+- In OBS add audio delay of about 3000 ms. (Note when you test it in OBS delay is not applied to audio monitoring only to recording or stream.)
 - Done!
 
 ## ffmpeg
