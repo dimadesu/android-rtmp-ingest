@@ -58,7 +58,7 @@ sv status nginx
 
 Create hotspot with your phone.
 
-### Find out your phone's IP address
+#### Find out your phone's IP address
 
 ```sh
 ifconfig
@@ -66,7 +66,7 @@ ifconfig
 
 Look for IP under `swlan0` > `inet`.
 
-### Configure your camera / video encoder to push to RTMP ingest
+#### Configure your camera / video encoder to push to RTMP ingest
 
 ```sh
 rtmp://IP_OF_YOUR_PHONE:1935/mystream
