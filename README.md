@@ -8,7 +8,7 @@ We'll be using [MediaMTX](https://github.com/bluenviron/mediamtx) as a server.
 
 For the video encoder we'll be using [`IRL Pro` app from Google Play](https://play.google.com/store/apps/details?id=app.irlpro.android). It can do SRT, HEVC, dynamic bitrate and bonding.
 
-Another option is to use `ffmpeg` directly. It will be able to do SRT HEVC with no dynamic bitrate and no bonding.
+Another option is to use `ffmpeg` in command line. It will be able to do SRT HEVC with no dynamic bitrate and no bonding.
 
 ## Termux
 
@@ -141,11 +141,13 @@ There will be a delay of about 3 seconds between HLS video and audio, so you'll 
 
 ## ffmpeg
 
-I usually use `ffmpeg` with Nginx that is running a service. I think you can run another Termux tab if you want to make it work with MediaMTX.
+I usually use `ffmpeg` with Nginx that is running as a service. I think you can run another Termux tab if you want to make it work with MediaMTX.
+
+Please refer to the Nginx and ffmpeg instruction in another repo for details https://github.com/dimadesu/termux-nginx-rtmp
 
 To encode HEVC with hardware accelation use MediaCodec options.
 
-This is what works for my Samsung S20 FE.
+This works on my Samsung S20 FE.
 
 Example:
 ```
