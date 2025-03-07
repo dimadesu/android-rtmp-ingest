@@ -158,4 +158,12 @@ ffmpeg -i rtmp://localhost:1935/mystream -c:v hevc_mediacodec -codec_name OMX.qc
 
 Note: `-codec_name` you'll need to look up for your phone. Use [`Codec Info` app](https://play.google.com/store/apps/details?id=com.parseus.codecinfo) from Play Store and pick a codec that can do hardware accelation.
 
+## References / Links
+
+IRL Pro Discord threads
+- [RTMP Ingest](https://discord.com/channels/996502486535901306/1191179335479087104)
+- [Built-in RTMP Server that can be used as a source](https://discord.com/channels/996502486535901306/1056294460121690132)
+- This is sort of a continuation of this repo: https://github.com/dimadesu/termux-nginx-rtmp
+
+
 Tweak other ffmpeg options to your liking.
