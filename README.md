@@ -1,18 +1,20 @@
 # RTMP Ingest for Android. RTMP H264 to SRT H265 (aka HEVC)
 
-The goal is to send RTMP stream from action camera (any RTMP feed really) to the server running on Android phone and then send SRT HEVC out.
+The goal is to send RTMP stream from an action camera (any RTMP feed really) to the server running on Android phone and then send SRT HEVC out.
 
-To achieve that all we need is a server that can run on Android and a video encoder.
+To achieve that we need a server that can run on Android and a video encoder.
 
-For the server we'll be using [MediaMTX](https://github.com/bluenviron/mediamtx).
+We'll be using [MediaMTX](https://github.com/bluenviron/mediamtx) as a server.
 
-For the video encoder we'll be using `IRL Pro` app from Google Play. It can do SRT, HEVC, dynamic bitrate and bonding.
+For the video encoder we'll be using [`IRL Pro` app from Google Play](https://play.google.com/store/apps/details?id=app.irlpro.android). It can do SRT, HEVC, dynamic bitrate and bonding.
 
-Another option is to use `ffmpeg` directly. It will be able to do only SRT, HEVC, no dynamic bitrate and no bonding.
+Another option is to use `ffmpeg` directly. It will be able to do SRT HEVC with no dynamic bitrate and no bonding.
 
 ## Termux
 
 Server will be running on [Termux](https://termux.dev/en/). Install it on your phone. Do not use Google Play version.
+
+Start Termux and run commands.
 
 ## MediaMTX
 
@@ -60,7 +62,7 @@ Create hotspot with your phone.
 
 #### Find out your phone's IP address
 
-```sh
+```
 ifconfig
 ```
 
@@ -68,7 +70,7 @@ Look for IP under `swlan0` > `inet`.
 
 #### Configure your camera / video encoder to push to RTMP ingest
 
-```sh
+```
 rtmp://IP_OF_YOUR_PHONE:1935/mystream
 ```
 
@@ -111,15 +113,17 @@ systemctl start mediamtx
 
 ### Intro
 
-As of March 2025 it doesn't have RTMP ingest feature, so this is a bit of a workaround.
+As of March 2025 `IRL Pro` doesn't have RTMP ingest feature, so this is a workaround.
 
 Big thanks goes to `Supairyacht` user from `IRL Pro`'s Discord server for this idea.
 
-We'll be pushing into RTMP ingest of MediaMTX and pulling HLS. It can do this by default, no setup is needed.
+We'll be pushing into RTMP ingest of MediaMTX and pulling HLS from MediaMTX. It can do this by default. No setup needed.
 
 HLS is essentially an HTML page with a video in it.
 
-We'll create an overlay to display HLS page in `IRL Pro` that will cover the whole phone camera video.
+We'll create an overlay to display HLS page in `IRL Pro`. It can cover the whole phone view area if you like.
+
+### Audio
 
 The only major issue with this idea is that overlays have no audio. You can get audio via phone's audio input or Bluetooth mic connected to the phone.
 
