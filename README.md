@@ -54,6 +54,7 @@ Check if that worked.
 sv status nginx
 ```
 
+## TODO: This section needs to be re-written for Termux. Skip it for now
 ## (Optional) Configure MediaMTX to auto start as a service
 
 Please refer to documention in MediaMTX README https://github.com/bluenviron/mediamtx?tab=readme-ov-file#start-on-boot
@@ -87,6 +88,22 @@ systemctl daemon-reload
 systemctl enable mediamtx
 systemctl start mediamtx
 ```
+
+## IRL Pro
+
+As of March 2025 it doesn't have RTMP ingest feature, so this is a bit of a workaround.
+
+Big thanks goes to `Supairyacht` user from `IRL Pro`'s Discord server for this idea.
+
+We'll be pushing into RTMP ingest and pulling HLS from MediaMTX. It can do this by default, no setup is needed.
+
+HLS is essentially an HTML page with a video in it.
+
+We'll create an overlay to display HLS feed in IRL Pro that will cover the whole phone camera video.
+
+Note that overlays have no audio, so audio will go through the phone's audio input. There will be delay of about 3 seconds, that you'll have to fix in OBS that will have SRT as Media source.
+
+TODO: continue
 
 ## ffmpeg
 
