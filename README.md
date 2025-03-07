@@ -54,7 +54,25 @@ Check if that worked.
 sv status nginx
 ```
 
-## TODO: This section needs to be re-written for Termux. Skip it for now
+### Test
+
+Create hotspot with your phone.
+
+### Find out your phone's IP address
+
+```sh
+ifconfig
+```
+
+Look for IP under `swlan0` > `inet`.
+
+### Configure your camera / video encoder to push to RTMP ingest
+
+```sh
+rtmp://IP_OF_YOUR_PHONE:1935/mystream
+```
+
+## TODO: The following section needs to be re-written for Termux. Skip it for now
 ## (Optional) Configure MediaMTX to auto start as a service
 
 Please refer to documention in MediaMTX README https://github.com/bluenviron/mediamtx?tab=readme-ov-file#start-on-boot
@@ -91,6 +109,8 @@ systemctl start mediamtx
 
 ## IRL Pro
 
+### Intro
+
 As of March 2025 it doesn't have RTMP ingest feature, so this is a bit of a workaround.
 
 Big thanks goes to `Supairyacht` user from `IRL Pro`'s Discord server for this idea.
@@ -99,11 +119,25 @@ We'll be pushing into RTMP ingest and pulling HLS from MediaMTX. It can do this 
 
 HLS is essentially an HTML page with a video in it.
 
-We'll create an overlay to display HLS feed in IRL Pro that will cover the whole phone camera video.
+We'll create an overlay to display HLS feed in `IRL Pro` that will cover the whole phone camera video.
 
-Note that overlays have no audio, so audio will go through the phone's audio input. There will be delay of about 3 seconds, that you'll have to fix in OBS that will have SRT as Media source.
+The only major issue with this idea is that overlays have no audio, but you can get audio via phone's audio input or Bluetooth mic connected to the phone.
 
-TODO: continue
+There will be delay of about 3 seconds for HLS feed, so you'll have to fix that in OBS that has SRT as Media source.
+
+### Setup
+
+Add an overlay. Use this url for HLS:
+
+```
+http://localhost:8888/mystream
+```
+
+Set you IRL Pro to send SRT HEVC.
+
+Go Live.
+
+Add audio delay of about 3000 ms in OBS that you use for SRT media source. Note that in OBS delay is not applied to audio monitoring only to recording or stream.
 
 ## ffmpeg
 
