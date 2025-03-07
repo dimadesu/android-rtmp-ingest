@@ -6,15 +6,15 @@ To achieve that we need a server that can run on Android and a video encoder.
 
 We'll be using [MediaMTX](https://github.com/bluenviron/mediamtx) as a server.
 
-For the video encoder we'll be using [`IRL Pro`](https://play.google.com/store/apps/details?id=app.irlpro.android). It can do SRT, HEVC, dynamic bitrate and bonding.
+For the video encoder we'll be using [`IRL Pro`](https://irlpro.app). It can do SRT HEVC with dynamic bitrate and bonding.
 
-Another option is to use `ffmpeg` in Termux. It will be able to do SRT HEVC with no dynamic bitrate and no bonding.
+Another option is to use `ffmpeg` in Termux. It allows SRT HEVC with no dynamic bitrate and no bonding.
 
 ## Termux
 
 MediaMTX will be running on [Termux](https://termux.dev/en/). Install Termux on your phone. Do not use Google Play version.
 
-Start Termux and copy-paste or type commands below.
+Start Termux and copy-paste or type the commands below.
 
 ## MediaMTX
 
@@ -25,6 +25,7 @@ pkg install wget
 ```
 
 We need to grab `linux_arm64v8` version from one of releases https://github.com/bluenviron/mediamtx/releases.
+(Your phone can has a different architecture, but try this first.)
 
 ```
 wget https://github.com/bluenviron/mediamtx/releases/download/v1.11.3/mediamtx_v1.11.3_linux_arm64v8.tar.gz
@@ -58,9 +59,9 @@ sv status nginx
 
 ### Test
 
-Create hotspot with your phone.
+Create a hotspot with your phone. Your camera will need to connect to your phone's hotspot (be on the same network).
 
-#### Find out your phone's IP address
+Find out your phone's IP address.
 
 ```
 ifconfig
@@ -68,11 +69,13 @@ ifconfig
 
 Look for IP under `swlan0` > `inet`.
 
-#### Configure your camera / video encoder to push to RTMP ingest
+Configure your camera / video encoder to push to RTMP ingest.
 
 ```
 rtmp://IP_OF_YOUR_PHONE:1935/mystream
 ```
+
+Start streaming your camera to MediaMTX server. If it works it works.
 
 ## TODO: The following section needs to be re-written for Termux. Skip it for now
 ## (Optional) Configure MediaMTX to auto start as a service
