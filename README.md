@@ -143,15 +143,19 @@ There will be a delay of about 3 seconds between HLS video and audio, so you'll 
 
 I usually use `ffmpeg` with Nginx that is running as a service. I think you can run another Termux tab if you want to make it work with MediaMTX.
 
-Please refer to the Nginx and ffmpeg instruction in another repo for details https://github.com/dimadesu/termux-nginx-rtmp
+Please refer to the Nginx and ffmpeg instructions in another repo for details https://github.com/dimadesu/termux-nginx-rtmp (it's missing a bit with hardware accelarate options though).
 
-To encode HEVC with hardware accelation use MediaCodec options.
+Install
 
-This works on my Samsung S20 FE.
-
-Example:
 ```
-ffmpeg -i rtmp://localhost:1935/publish/live -c:v hevc_mediacodec -codec_name OMX.qcom.video.encoder.hevc -bitrate_mode 1 -b:v 4000K -g 250 -pix_fmt nv12 -c:a copy -f mpegts srt://au.srt.belabox.net:4000?streamid=YOUR_STREAM_ID
+pkg install ffmpeg
+```
+
+To encode HEVC with hardware accelation use MediaCodec options. This works on my Samsung S20 FE for example:
+```
+ffmpeg -i rtmp://localhost:1935/mystream -c:v hevc_mediacodec -codec_name OMX.qcom.video.encoder.hevc -bitrate_mode 1 -b:v 4000K -g 250 -pix_fmt nv12 -c:a copy -f mpegts srt://au.srt.belabox.net:4000?streamid=YOUR_STREAM_ID
 ```
 
 Note: `-codec_name` you'll need to look up for your phone. Use [`Codec Info` app](https://play.google.com/store/apps/details?id=com.parseus.codecinfo) from Play Store and pick a codec that can do hardware accelation.
+
+Tweak other ffmpeg options to your liking.
