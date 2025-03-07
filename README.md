@@ -1,25 +1,14 @@
-# RTMP Ingest for Android
+# RTMP Ingest for Android. RTMP H264 to SRT H265 (aka HEVC)
 
-The goal is to send RTMP stream from action camera to the server running on Android phone.
+The goal is to send RTMP stream from action camera (any RTMP feed really) to the server running on Android phone and then send SRT HEVC out.
 
-Then send SRT HEVC out to SRT ingest.
+To achieve that all we need is a server that can run on Android and a video encoder.
 
-All we need is a server running on Android and some video encoder to encode video and to send it out.
+For the server we'll be using [MediaMTX](https://github.com/bluenviron/mediamtx).
 
-For server with RTMP ingest I tested 2 options:
-- [Nginx with RTMP module](https://github.com/dimadesu/termux-nginx-rtmp)
-- [MediaMTX](https://github.com/bluenviron/mediamtx)
+For the video encoder we'll be using `IRL Pro` app from Google Play. It can do SRT, HEVC, dynamic bitrate and bonding.
 
-Here I'll be show how to setup MediaMTX.
-
-For video encoder we'll be using `IRL Pro` app from Google Play. It can do SRT, HEVC, dynamic bitrate and bonding.
-
-Another option is to use `ffmpeg` directly. To encode HEVC with hardware accelation use MediaCodec options.
-
-Example:
-```
-ffmpeg -i rtmp://localhost:1935/publish/live -c:v hevc_mediacodec -codec_name OMX.qcom.video.encoder.hevc -bitrate_mode 1 -b:v 4000K -g 250 -pix_fmt nv12 -c:a copy -f mpegts srt://au.srt.belabox.net:4000?streamid=YOUR_STREAM_ID
-```
+Another option is to use `ffmpeg` directly. It will be able to do only SRT, HEVC, no dynamic bitrate and no bonding.
 
 ## Termux
 
@@ -27,13 +16,13 @@ Server will be running on [Termux](https://termux.dev/en/). Install it on your p
 
 ## MediaMTX
 
-Install `wget` to allow downloading MediaMTX
+Install `wget` to allow downloading MediaMTX.
 
 ```
 pkg install wget
 ```
 
-We need to grab linux_arm64v8.tar.gz version from one of releases https://github.com/bluenviron/mediamtx/releases.
+We need to grab `linux_arm64v8` version from one of releases https://github.com/bluenviron/mediamtx/releases.
 
 ```
 wget https://github.com/bluenviron/mediamtx/releases/download/v1.11.3/mediamtx_v1.11.3_linux_arm64v8.tar.gz
@@ -44,3 +33,70 @@ Unarchive it.
 ```
 tar -xvzf mediamtx_v1.11.3_linux_arm64v8.tar.gz
 ```
+
+Run MediaMTX.
+
+```
+./mediamtx
+```
+
+### (Optional) MediaMTX conflicts with Nginx
+
+Note. I am switching back and forth between Nginx and MediaMTX. If MediaMTX is failing to start that usually means port `1935` is taken by Nginx, so stop Nginx:
+
+```
+sv down nginx
+```
+
+Check if that worked.
+
+```
+sv status nginx
+```
+
+## (Optional) Configure MediaMTX to auto start as a service
+
+Please refer to documention in MediaMTX README https://github.com/bluenviron/mediamtx?tab=readme-ov-file#start-on-boot
+
+`systemd` is in charge of managing services and starting them on boot.
+
+Copy:
+
+```
+cp mediamtx /usr/local/bin/
+cp mediamtx.yml /usr/local/etc/
+```
+
+Create a systemd service:
+
+```
+sudo tee /etc/systemd/system/mediamtx.service >/dev/null << EOF
+[Unit]
+Wants=network.target
+[Service]
+ExecStart=/usr/local/bin/mediamtx /usr/local/etc/mediamtx.yml
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+Enable and start the service:
+
+```
+systemctl daemon-reload
+systemctl enable mediamtx
+systemctl start mediamtx
+```
+
+## ffmpeg
+
+To encode HEVC with hardware accelation use MediaCodec options.
+
+This is what works for my Samsung S20 FE.
+
+Example:
+```
+ffmpeg -i rtmp://localhost:1935/publish/live -c:v hevc_mediacodec -codec_name OMX.qcom.video.encoder.hevc -bitrate_mode 1 -b:v 4000K -g 250 -pix_fmt nv12 -c:a copy -f mpegts srt://au.srt.belabox.net:4000?streamid=YOUR_STREAM_ID
+```
+
+Note: `-codec_name` you'll need to look up for your phone. Use [`Codec Info` app](https://play.google.com/store/apps/details?id=com.parseus.codecinfo) from Play Store and pick a codec that can do hardware accelation.
