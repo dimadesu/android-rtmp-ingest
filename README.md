@@ -121,22 +121,18 @@ HLS is essentially an HTML page with a video in it.
 
 We'll create an overlay to display HLS page in `IRL Pro` that will cover the whole phone camera video.
 
-The only major issue with this idea is that overlay have no audio. You can get audio via phone's audio input or Bluetooth mic connected to the phone.
+The only major issue with this idea is that overlays have no audio. You can get audio via phone's audio input or Bluetooth mic connected to the phone.
 
-There will be a delay of about 3 seconds for HLS video, so you'll have to fix that in OBS (that has SRT as Media source).
+There will be a delay of about 3 seconds between HLS video and audio, so you'll have to fix that in OBS (that has SRT media source).
 
 ### Setup
 
-- Add an overlay in `IRL Pro`. This is the URL for your HLS:
-
+- Add an overlay in `IRL Pro`. Use HLS feed from MediaMTX as an overlay URL source:
   ```
   http://localhost:8888/mystream
   ```
-
 - Set you `IRL Pro` to send SRT HEVC.
-
 - Go live in `IRL Pro`.
-
 - In OBS add audio delay of about 3000 ms. Note that in OBS delay is not applied to audio monitoring only to recording or a stream.
 
 ## ffmpeg
