@@ -50,7 +50,7 @@ I am switching back and forth between MediaMTX and Nginx. If MediaMTX is failing
 sv down nginx
 ```
 
-Check if that Nginx is down.
+Confirm that Nginx is down.
 
 ```
 sv status nginx
@@ -121,7 +121,7 @@ We'll be pushing into RTMP ingest of MediaMTX and pulling HLS from MediaMTX. It 
 
 HLS is essentially an HTML page with a video in it.
 
-We'll create an overlay to display HLS page in `IRL Pro`. It can cover the whole phone view area if you like.
+We'll create an overlay to display HLS page in `IRL Pro`. It can cover the whole view area if you like.
 
 ### Audio
 
@@ -129,23 +129,24 @@ The only major issue with this idea is that overlays have no audio. You can get 
 
 There will be a delay of about 3 seconds between HLS video and audio, so you'll have to fix that in OBS (that has SRT media source).
 
-### Setup
+### Setup `IRL Pro`
 
-- Add an overlay in `IRL Pro`. Use HLS feed from MediaMTX as an overlay URL source:
+- Add an overlay in `IRL Pro`. Use HLS feed from MediaMTX as an overlay source URL:
   ```
   http://localhost:8888/mystream
   ```
-- Set you `IRL Pro` to send SRT HEVC.
-- Go live in `IRL Pro`.
-- In OBS add audio delay of about 3000 ms. Note that in OBS delay is not applied to audio monitoring only to recording or a stream.
+- Setup your `IRL Pro` to stream SRT HEVC.
+- Start your stream in `IRL Pro`.
+- In OBS add audio delay of about 3000 ms. (Note in OBS delay is not applied to audio monitoring only to recording or a stream.)
+- Done!
 
 ## ffmpeg
 
-I usually use `ffmpeg` with Nginx that is running as a service. I think you can run another Termux tab if you want to make it work with MediaMTX.
+I usually use `ffmpeg` with Nginx that is running as a service. I think you can run another Termux tab if you want to make it work with MediaMTX (if it is nor running as a service).
 
-Please refer to the Nginx and ffmpeg instructions in another repo for details https://github.com/dimadesu/termux-nginx-rtmp (it's missing a bit with hardware accelarate options though).
+Please refer to the Nginx and ffmpeg instructions in another repo for details https://github.com/dimadesu/termux-nginx-rtmp (it's missing a bit with hardware accelarate options though, I'll update it someday).
 
-Install
+Install ffmpeg.
 
 ```
 pkg install ffmpeg
@@ -162,7 +163,7 @@ Tweak other ffmpeg options to your liking.
 
 ## References / Links
 
-IRL Pro Discord threads
-- [RTMP Ingest](https://discord.com/channels/996502486535901306/1191179335479087104)
-- [Built-in RTMP Server that can be used as a source](https://discord.com/channels/996502486535901306/1056294460121690132)
+- IRL Pro Discord threads
+  - [RTMP Ingest](https://discord.com/channels/996502486535901306/1191179335479087104)
+  - [Built-in RTMP Server that can be used as a source](https://discord.com/channels/996502486535901306/1056294460121690132)
 - This is sort of a continuation of this repo: https://github.com/dimadesu/termux-nginx-rtmp
