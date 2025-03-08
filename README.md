@@ -77,6 +77,8 @@ Configure your camera / video encoder to push to RTMP ingest.
 rtmp://IP_OF_YOUR_PHONE:1935/mystream
 ```
 
+#### Start stream from camera
+
 Start streaming your camera to MediaMTX server. If it works it works.
 
 ## TODO: The following section needs to be re-written for Termux. Skip it for now
@@ -145,13 +147,11 @@ There will be a delay of about 3 seconds between HLS video and phone audio, so y
 - In OBS add audio delay of about 3000 ms. (Note when you test it in OBS delay is not applied to audio monitoring only to recording or stream.)
 - Done!
 
-## ffmpeg
+## `ffmpeg`
 
-I usually use `ffmpeg` with Nginx that is running as a service in Termux. I think you can run another Termux tab if you want to make it work with MediaMTX (if it is nor running as a service).
+Keep MediaMTX running. Open a new Termux terminal and run `ffmpeg` in it.
 
-Please refer to the Nginx and ffmpeg instructions in another repo for details https://github.com/dimadesu/termux-nginx-rtmp (it's missing a bit with hardware accelarate options though, I'll update it someday).
-
-Install ffmpeg.
+Install `ffmpeg`.
 
 ```
 pkg install ffmpeg
@@ -171,4 +171,4 @@ Tweak other ffmpeg options to your liking.
 - `IRL Pro` Discord threads
   - [RTMP Ingest](https://discord.com/channels/996502486535901306/1191179335479087104)
   - [Built-in RTMP Server that can be used as a source](https://discord.com/channels/996502486535901306/1056294460121690132)
-- This is sort of a continuation of this page that I wrote https://github.com/dimadesu/termux-nginx-rtmp
+- This is sort of a continuation of this page that I wrote https://github.com/dimadesu/termux-nginx-rtmp (it's missing a bit with hardware accelarate options though, I'll update it someday).
