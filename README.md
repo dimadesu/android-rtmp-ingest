@@ -83,40 +83,23 @@ rtmp://IP_OF_YOUR_PHONE:1935/mystream
 
 Start streaming your camera to MediaMTX server. If it works it works.
 
-## TODO: The following section needs to be re-written for Termux. Skip it for now
-## (Optional) Configure MediaMTX to auto start as a service
+## (Optional) Configure MediaMTX to auto start
 
-Please refer to documention in MediaMTX README https://github.com/bluenviron/mediamtx?tab=readme-ov-file#start-on-boot
-
-`systemd` is in charge of managing services and starting them on boot.
-
-Copy:
+There are different ways to do this. Creating a service is a little a bit involved. The lazy way is to add MediaMTX to `.bashrc` file. It will start on every Termux terminal session start and will be killed when you exit terminal.
 
 ```
-cp mediamtx /usr/local/bin/
-cp mediamtx.yml /usr/local/etc/
+nano .bashrc
 ```
 
-Create a systemd service:
-
 ```
-sudo tee /etc/systemd/system/mediamtx.service >/dev/null << EOF
-[Unit]
-Wants=network.target
-[Service]
-ExecStart=/usr/local/bin/mediamtx /usr/local/etc/mediamtx.yml
-[Install]
-WantedBy=multi-user.target
-EOF
+./mediamtx
 ```
 
-Enable and start the service:
+CTRL + O
+Enter
+CTRL + X
 
-```
-systemctl daemon-reload
-systemctl enable mediamtx
-systemctl start mediamtx
-```
+Restart Termux app or create new session.
 
 ## IRL Pro
 
