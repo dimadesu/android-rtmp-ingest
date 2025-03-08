@@ -174,6 +174,40 @@ More details on Mediacodec options
 ffmpeg -help encoder=hevc_mediacodec
 ```
 
+### Script that can restart `ffmpeg` if it exits or errors out
+
+For convenience you can create a script and manually run it.
+
+```sh
+nano ffmpeg.sh
+```
+
+Paste script.
+
+```sh
+while true; do
+ffmpeg -i rtmp://localhost:1935/mystream -c:v hevc_mediacodec -codec_name OMX.qcom.video.encoder.hevc -bitrate_mode 1 -b:v 4000K -g 250 -pix_fmt nv12 -c:a copy -f mpegts srt://au.srt.belabox.net:4000?streamid=YOUR_STREAM_ID
+echo "FFmpeg exited. Restarting in 5 seconds."
+sleep 5
+done
+```
+
+In Nano:
+- `CTRL` + `O`, `Enter` to write file.
+- `CTRL` + `X` to quit.
+
+Give executable permissions.
+
+```sh
+chmod +x ffmpeg.sh
+```
+
+Run script.
+
+```sh
+./ffmpeg.sh
+```
+
 ## References
 
 - `IRL Pro` Discord threads
