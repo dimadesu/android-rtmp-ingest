@@ -6,9 +6,9 @@ To achieve this we need a server that can run on Android and a video encoder.
 
 We'll be using [MediaMTX](https://github.com/bluenviron/mediamtx) as a server (running in Termux).
 
-[`IRL Pro`](https://irlpro.app) is a great video encoder app. It can stream SRT HEVC with dynamic bitrate and bonding. Cannot use audio from RTMP stream.
+[`IRL Pro`](https://irlpro.app) is a great video encoder app. It can stream SRT HEVC with dynamic bitrate and bonding. Unfortunately, it cannot use audio from an RTMP stream, but it can use audio from a phone audio input or a Bluetooth mic connected to the phone.
 
-Another option is to use `ffmpeg` in Termux. It can do SRT HEVC with no dynamic bitrate and no bonding. Uses audio from RTMP stream.
+Another option is to use `ffmpeg` in Termux. It can do SRT HEVC with no dynamic bitrate and no bonding. It uses audio from RTMP stream.
 
 ## Termux
 
