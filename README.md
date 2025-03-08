@@ -6,9 +6,9 @@ To achieve this we need a server that can run on Android and a video encoder.
 
 We'll be using [MediaMTX](https://github.com/bluenviron/mediamtx) as a server (running in Termux).
 
-[`IRL Pro`](https://irlpro.app) is a great video encoder app. It can stream SRT HEVC with dynamic bitrate and bonding.
+[`IRL Pro`](https://irlpro.app) is a great video encoder app. It can stream SRT HEVC with dynamic bitrate and bonding. Cannot use audio from RTMP stream.
 
-Another option is to use `ffmpeg` in Termux. It can do SRT HEVC with no dynamic bitrate and no bonding.
+Another option is to use `ffmpeg` in Termux. It can do SRT HEVC with no dynamic bitrate and no bonding. Uses audio from RTMP stream.
 
 ## Termux
 
@@ -159,7 +159,7 @@ Install `ffmpeg`.
 pkg install ffmpeg
 ```
 
-To encode HEVC with hardware accelation use MediaCodec options. This works on my Samsung S20 FE for example:
+To encode HEVC with hardware accelation use Mediacodec options. This works on my Samsung S20 FE for example:
 ```
 ffmpeg -i rtmp://localhost:1935/mystream -c:v hevc_mediacodec -codec_name OMX.qcom.video.encoder.hevc -bitrate_mode 1 -b:v 4000K -g 250 -pix_fmt nv12 -c:a copy -f mpegts srt://au.srt.belabox.net:4000?streamid=YOUR_STREAM_ID
 ```
@@ -167,6 +167,12 @@ ffmpeg -i rtmp://localhost:1935/mystream -c:v hevc_mediacodec -codec_name OMX.qc
 `-codec_name` setting you need to look up for your phone. Use [`Codec Info` app](https://play.google.com/store/apps/details?id=com.parseus.codecinfo) and find a codec that can do hardware accelation.
 
 Tweak other ffmpeg options to your liking.
+
+More details on Mediacodec options
+
+```
+ffmpeg -help encoder=hevc_mediacodec
+```
 
 ## References
 
