@@ -49,6 +49,8 @@ Run MediaMTX.
 ./mediamtx
 ```
 
+To stop MediaMTX tap `CTRL` button in Termux view and type `c`.
+
 ### Test
 
 #### Hotspot
