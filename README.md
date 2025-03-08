@@ -180,3 +180,4 @@ ffmpeg -help encoder=hevc_mediacodec
   - [RTMP Ingest](https://discord.com/channels/996502486535901306/1191179335479087104)
   - [Built-in RTMP Server that can be used as a source](https://discord.com/channels/996502486535901306/1056294460121690132)
 - This is sort of a continuation of this page that I wrote https://github.com/dimadesu/termux-nginx-rtmp (it's missing a bit with hardware accelarate options though, I'll update it someday).
+- Mediacodec https://wiki.x266.mov/docs/encoders_hw/mediacodec
