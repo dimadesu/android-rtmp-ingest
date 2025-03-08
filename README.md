@@ -91,13 +91,15 @@ There are different ways to do this. Creating a service is a little a bit involv
 nano .bashrc
 ```
 
+Add this to the content of `.bashrc` file.
+
 ```
 ./mediamtx
 ```
 
-CTRL + O
-Enter
-CTRL + X
+In Nano:
+- `CTRL` + `O`, `Enter` to write file.
+- `CTRL` + `X` to quit.
 
 Restart Termux app or create new session.
 
