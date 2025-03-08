@@ -16,6 +16,12 @@ MediaMTX will be running on [Termux](https://termux.dev/en/). Install Termux on 
 
 Start Termux and copy-paste or type the commands below.
 
+To copy commands open this page on the phone in the brower and tap on commands.
+
+To paste into Termux long tap anywhere on Termux terminal view to bring up context menu and choose `Paste`.
+
+If at any time you need a new terminal sort of window right swipe from the left edge of screen and tap `New session` button.
+
 ## MediaMTX
 
 Install `wget` to allow downloading MediaMTX.
@@ -51,7 +57,7 @@ Create a hotspot with your phone. Your camera will need to connect to your phone
 
 #### New Termux session
 
-Keep MediaMTX running. Open new Termux session by swiping right from the left edge of the screen and tap `New session` button.
+Keep MediaMTX running. Open new Termux terminal by swiping right from the left edge of the screen and tap `New session` button.
 
 #### Phone's IP address
 
