@@ -16,11 +16,11 @@ MediaMTX will be running on [Termux](https://termux.dev/en/). Install Termux on 
 
 Start Termux and copy-paste or type the commands below.
 
-To copy commands open this page on the phone in the brower and tap on commands.
+To copy commands open this page in the browser on the phone and tap on commands.
 
 To paste into Termux long tap anywhere on Termux terminal view to bring up context menu and choose `Paste`.
 
-If at any time you need a new terminal sort of window right swipe from the left edge of screen and tap `New session` button.
+If at any time you need a new terminal swipe from the left edge of screen and tap `New session` button.
 
 ## MediaMTX
 
@@ -49,7 +49,7 @@ Run MediaMTX.
 ./mediamtx
 ```
 
-To stop MediaMTX tap `CTRL` button in Termux view and type `c`.
+To stop MediaMTX tap `CTRL` button in Termux and type `c`.
 
 ### Test
 
@@ -59,7 +59,7 @@ Create a hotspot with your phone. Your camera will need to connect to your phone
 
 #### New Termux session
 
-Keep MediaMTX running. Open new Termux terminal by swiping right from the left edge of the screen and tap `New session` button.
+Keep MediaMTX running. Open new Termux terminal by swiping right from the left edge of the screen and tapping `New session` button.
 
 #### Phone's IP address
 
@@ -71,15 +71,15 @@ ifconfig
 
 Look for IP under `swlan0` > `inet`.
 
-#### Push RTMP to your phone
+#### Get ready to stream RTMP to your phone
 
-Configure your camera / video encoder to push to RTMP ingest.
+Configure your camera or video encoder to push to RTMP ingest of your phone.
 
 ```
 rtmp://IP_OF_YOUR_PHONE:1935/mystream
 ```
 
-#### Start stream from camera
+#### Start the stream
 
 Start streaming your camera to MediaMTX server. If it works it works.
 
