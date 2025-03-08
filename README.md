@@ -43,23 +43,17 @@ Run MediaMTX.
 ./mediamtx
 ```
 
-### (Optional) MediaMTX conflicts with Nginx
-
-I am switching back and forth between MediaMTX and Nginx. If MediaMTX is failing to start that usually means port `1935` is taken by Nginx, so stop Nginx:
-
-```
-sv down nginx
-```
-
-Confirm that Nginx is down.
-
-```
-sv status nginx
-```
-
 ### Test
 
+#### Hotspot
+
 Create a hotspot with your phone. Your camera will need to connect to your phone's hotspot (be on the same network).
+
+#### New Termux session
+
+Keep MediaMTX running. Open new Termux session by swiping right from the left edge of the screen and tap `New session` button.
+
+#### Phone's IP address
 
 Find out your phone's IP address.
 
@@ -68,6 +62,8 @@ ifconfig
 ```
 
 Look for IP under `swlan0` > `inet`.
+
+#### Push RTMP to your phone
 
 Configure your camera / video encoder to push to RTMP ingest.
 
