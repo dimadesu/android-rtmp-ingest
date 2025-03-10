@@ -1,6 +1,6 @@
 # RTMP Ingest on Android. RTMP H264 to SRT H265 (aka HEVC)
 
-The goal is to send RTMP stream from an action camera (any RTMP feed really) to the server running on Android phone and use that a source for a video encoder (running on the same Android phone) to stream it as SRT HEVC.
+The goal is to send RTMP stream from an action camera (or any RTMP feed really) to the server running on Android phone and use that a source for a video encoder (running on the same Android phone) to stream it as SRT HEVC.
 
 To achieve this we need a server that can run on Android and a video encoder.
 
