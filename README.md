@@ -85,13 +85,13 @@ Start streaming your camera to MediaMTX server. If it works it works.
 
 ## (Optional) Configure MediaMTX to auto start
 
-There are different ways to do this. Creating a service is a little a bit involved. The lazy way is to add MediaMTX to `.bashrc` file. It will start on every Termux terminal session start and will be killed when you exit terminal.
+There are different ways to do this. Creating a service is a little a bit involved. The lazy way is to add MediaMTX to `.bashrc` file. The server will start on new Termux terminal session and will be killed when you exit terminal.
 
 ```
 nano .bashrc
 ```
 
-Add this to the content of `.bashrc` file.
+Add the following line to the content of `.bashrc` file.
 
 ```
 ./mediamtx
@@ -101,7 +101,7 @@ In Nano:
 - `CTRL` + `O`, `Enter` to write file.
 - `CTRL` + `X` to quit.
 
-Restart Termux app or create new session.
+Restart Termux app or create new session to see it work.
 
 ## IRL Pro
 
