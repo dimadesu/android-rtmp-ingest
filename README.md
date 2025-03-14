@@ -57,7 +57,7 @@ To stop MediaMTX tap `CTRL` button in Termux and type `c`.
 
 Create a hotspot with your phone. Your camera will need to connect to your phone's hotspot (be on the same network).
 
-#### New Termux session
+#### New Termux terminal session
 
 Keep MediaMTX running. Open new Termux terminal by swiping right from the left edge of the screen and tapping `New session` button.
 
@@ -103,7 +103,7 @@ In Nano:
 - `CTRL` + `O`, `Enter` to write file.
 - `CTRL` + `X` to quit.
 
-Restart Termux app or create new session to see it work.
+Restart Termux app or create a new terminal session to see it work.
 
 ## IRL Pro
 
