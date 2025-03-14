@@ -2,23 +2,15 @@
 
 ```
 ffmpeg \
--listen 1 \
--hwaccel mediacodec \
--i rtmp://0.0.0.0:1935 \
--listen_timeout 1000 \
+-i srt://localhost:8890?streamid=read:mystream \
 -c:v hevc_mediacodec \
-# can theoratically send out 8 to 10mbps h265 - which I think is overkill for just one mobile data streaming source
-# -b:v 8M -maxrate 10M -bufsize 4M \
--b:v 6M -maxrate 8M -bufsize 2M \
-# Essential for MediaCodec \
--pix_fmt yuv420p \
-# Level for HD resolutions (adjust if needed)
+-codec_name OMX.qcom.video.encoder.hevc \
+-bitrate_mode 2 \
+-b:v 6M \
+-pix_fmt nv12 \
 -level:v 4.1 \
-# GOP size (adjust as needed)
 -g 30 \
-# No B-frames for minimal latency
 -bf 0 \
-# Tight QP range for very high quality
 -qmin 18 -qmax 20 \
 -c:a copy \
 -f mpegts \
