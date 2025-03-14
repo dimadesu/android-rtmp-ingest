@@ -75,6 +75,8 @@ Look for IP under `swlan0` > `inet`.
 
 Configure your camera or video encoder to push to RTMP ingest of your phone.
 
+(Replace `IP_OF_YOUR_PHONE` with an actual IP of your phone.)
+
 ```
 rtmp://IP_OF_YOUR_PHONE:1935/mystream
 ```
@@ -111,7 +113,7 @@ As of March 2025 `IRL Pro` doesn't have RTMP ingest feature, so this is a workar
 
 Big thanks to `Supairyacht` user from `IRL Pro` Discord server for this idea.
 
-We'll be pushing into RTMP ingest of MediaMTX and pulling HLS from MediaMTX. MediaMTX can do without any extra setup.
+We'll be pushing into RTMP ingest of MediaMTX and pulling HLS from MediaMTX. MediaMTX can do this without any extra setup.
 
 HLS is essentially an HTML page with a video in it.
 
@@ -119,7 +121,7 @@ We'll create an overlay to display HLS page in `IRL Pro`. It can cover the whole
 
 ### Audio
 
-The issue with this idea is that overlays have no audio. You can get audio via phone's audio input or Bluetooth mic connected to the phone.
+The issue with this idea is that overlays have no audio. `IRL Pro` lets you use audio via phone's audio input or Bluetooth mic connected to the phone.
 
 There will be a delay of about 3 seconds between HLS video and phone audio, so you'll have to fix that in OBS (that has SRT media source).
 
@@ -149,11 +151,11 @@ To encode HEVC with hardware accelation use Mediacodec options. This works on my
 ffmpeg -i rtmp://localhost:1935/mystream -c:v hevc_mediacodec -codec_name OMX.qcom.video.encoder.hevc -bitrate_mode 1 -b:v 4000K -g 250 -pix_fmt nv12 -c:a copy -f mpegts srt://au.srt.belabox.net:4000?streamid=YOUR_STREAM_ID
 ```
 
-`-codec_name` setting you need to look up for your phone. Use [`Codec Info` app](https://play.google.com/store/apps/details?id=com.parseus.codecinfo) and find a codec that can do hardware accelation.
+`-codec_name` setting you need to look up for your phone. Install [`Codec Info` app](https://play.google.com/store/apps/details?id=com.parseus.codecinfo) and use it to find a codec name on your phone that can do hardware accelation.
 
-Tweak other ffmpeg options to your liking.
+Tweak other `ffmpeg` options to your liking.
 
-More details on Mediacodec options
+Get more details on Mediacodec options:
 
 ```
 ffmpeg -help encoder=hevc_mediacodec
@@ -199,4 +201,4 @@ Run script.
   - [RTMP Ingest](https://discord.com/channels/996502486535901306/1191179335479087104)
   - [Built-in RTMP Server that can be used as a source](https://discord.com/channels/996502486535901306/1056294460121690132)
 - This is sort of a continuation of this page that I wrote https://github.com/dimadesu/termux-nginx-rtmp (it's missing a bit with hardware accelarate options though, I'll update it someday).
-- Mediacodec https://wiki.x266.mov/docs/encoders_hw/mediacodec
+- I got Mediacodec ideas from https://wiki.x266.mov/docs/encoders_hw/mediacodec
