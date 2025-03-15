@@ -4,7 +4,6 @@
 ffmpeg \
 -i srt://localhost:8890?streamid=read:mystream \
 -c:v hevc_mediacodec \
--codec_name OMX.qcom.video.encoder.hevc \
 -bitrate_mode 2 \
 -b:v 2M \
 -pix_fmt nv12 \
