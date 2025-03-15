@@ -6,12 +6,10 @@ ffmpeg \
 -c:v hevc_mediacodec \
 -codec_name OMX.qcom.video.encoder.hevc \
 -bitrate_mode 2 \
--b:v 6M \
+-b:v 2M \
 -pix_fmt nv12 \
 -level:v 4.1 \
 -g 30 \
--bf 0 \
--qmin 18 -qmax 20 \
 -c:a copy \
 -f mpegts \
 srt://URL
