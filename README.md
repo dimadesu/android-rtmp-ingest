@@ -148,7 +148,16 @@ pkg install ffmpeg
 
 To encode HEVC with hardware accelation use Mediacodec options. This works on my Samsung S20 FE for example:
 ```
-ffmpeg -i rtmp://localhost:1935/mystream -c:v hevc_mediacodec -codec_name OMX.qcom.video.encoder.hevc -bitrate_mode 1 -b:v 4000K -g 250 -pix_fmt nv12 -c:a copy -f mpegts srt://au.srt.belabox.net:4000?streamid=YOUR_STREAM_ID
+ffmpeg -i rtmp://localhost:1935/mystream \
+-c:v hevc_mediacodec \
+-codec_name OMX.qcom.video.encoder.hevc \
+-bitrate_mode 1 \
+-b:v 4000K \
+-g 250 \
+-pix_fmt nv12 \
+-c:a copy \
+-f mpegts \
+srt://au.srt.belabox.net:4000?streamid=YOUR_STREAM_ID
 ```
 
 `-codec_name` setting you need to look up for your phone. Install [`Codec Info` app](https://play.google.com/store/apps/details?id=com.parseus.codecinfo) and use it to find a codec name on your phone that can do hardware accelation.
@@ -173,7 +182,16 @@ Paste script.
 
 ```sh
 while true; do
-ffmpeg -i rtmp://localhost:1935/mystream -c:v hevc_mediacodec -codec_name OMX.qcom.video.encoder.hevc -bitrate_mode 1 -b:v 4000K -g 250 -pix_fmt nv12 -c:a copy -f mpegts srt://au.srt.belabox.net:4000?streamid=YOUR_STREAM_ID
+ffmpeg -i srt://localhost:1935/mystream \
+-c:v hevc_mediacodec \
+-codec_name OMX.qcom.video.encoder.hevc \
+-bitrate_mode 1 \
+-b:v 4000K \
+-g 250 \
+-pix_fmt nv12 \
+-c:a copy \
+-f mpegts \
+srt://au.srt.belabox.net:4000?streamid=YOUR_STREAM_ID
 echo "FFmpeg exited. Restarting in 5 seconds."
 sleep 5
 done
