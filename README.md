@@ -182,13 +182,13 @@ srt://au.srt.belabox.net:4000?streamid=YOUR_STREAM_ID
 
 Tweak other `ffmpeg` options to your liking.
 
-Get more details on Mediacodec options:
+(Optional) Get more details on Mediacodec options:
 
 ```
 ffmpeg -help encoder=hevc_mediacodec
 ```
 
-### Script that can restart `ffmpeg` if it exits or errors out
+### (Optional) Script that can restart `ffmpeg` if it exits or errors out
 
 For convenience you can create a script and manually run it.
 
