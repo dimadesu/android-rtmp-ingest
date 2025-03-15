@@ -146,7 +146,27 @@ Install `ffmpeg`.
 pkg install ffmpeg
 ```
 
-To encode HEVC with hardware accelation use Mediacodec options. This works on my Samsung S20 FE for example:
+To encode HEVC with hardware accelation use Mediacodec options. This works on my Samsung S20 FE for example.
+
+Try this first (w/o `-codec_name` option):
+
+```
+ffmpeg -i srt://localhost:8890?streamid=read:mystream \
+-c:v hevc_mediacodec \
+-bitrate_mode 2 \
+-b:v 3000K \
+-g 250 \
+-pix_fmt nv12 \
+-c:a copy \
+-f mpegts \
+srt://au.srt.belabox.net:4000?streamid=YOUR_STREAM_ID
+```
+
+Different phones can have different codecs, so if that doesn't work try setting `-codec_name` explicitly.
+You need to look it up for your phone. Install [`Codec Info` app](https://play.google.com/store/apps/details?id=com.parseus.codecinfo) and use it to find a codec name on your phone that can do hardware accelation.
+
+Here is what I use. `-codec_name` set to `OMX.qcom.video.encoder.hevc`:
+
 ```
 ffmpeg -i srt://localhost:8890?streamid=read:mystream \
 -c:v hevc_mediacodec \
@@ -159,8 +179,6 @@ ffmpeg -i srt://localhost:8890?streamid=read:mystream \
 -f mpegts \
 srt://au.srt.belabox.net:4000?streamid=YOUR_STREAM_ID
 ```
-
-`-codec_name` setting you need to look up for your phone. Install [`Codec Info` app](https://play.google.com/store/apps/details?id=com.parseus.codecinfo) and use it to find a codec name on your phone that can do hardware accelation.
 
 Tweak other `ffmpeg` options to your liking.
 
@@ -184,7 +202,6 @@ Paste script.
 while true; do
 ffmpeg -i srt://localhost:8890?streamid=read:mystream \
 -c:v hevc_mediacodec \
--codec_name OMX.qcom.video.encoder.hevc \
 -bitrate_mode 2 \
 -b:v 3000K \
 -g 250 \
