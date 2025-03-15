@@ -148,7 +148,7 @@ pkg install ffmpeg
 
 To encode HEVC with hardware accelation use Mediacodec options. This works on my Samsung S20 FE for example:
 ```
-ffmpeg -i rtmp://localhost:1935/mystream \
+ffmpeg -i srt://localhost:8890?streamid=read:mystream \
 -c:v hevc_mediacodec \
 -codec_name OMX.qcom.video.encoder.hevc \
 -bitrate_mode 2 \
@@ -182,7 +182,7 @@ Paste script.
 
 ```sh
 while true; do
-ffmpeg -i srt://localhost:1935/mystream \
+ffmpeg -i srt://localhost:8890?streamid=read:mystream \
 -c:v hevc_mediacodec \
 -codec_name OMX.qcom.video.encoder.hevc \
 -bitrate_mode 2 \
