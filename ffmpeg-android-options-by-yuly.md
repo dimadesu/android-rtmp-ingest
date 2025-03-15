@@ -1,17 +1,8 @@
 # `ffmpeg` Android options by `Yuly`
 
 ```
-ffmpeg \
--i srt://localhost:8890?streamid=read:mystream \
--c:v hevc_mediacodec \
--bitrate_mode 2 \
--b:v 2M \
--pix_fmt nv12 \
 -level:v 4.1 \
 -g 30 \
--c:a copy \
--f mpegts \
-srt://URL
 ```
 
 References:
