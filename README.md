@@ -151,8 +151,8 @@ To encode HEVC with hardware accelation use Mediacodec options. This works on my
 ffmpeg -i rtmp://localhost:1935/mystream \
 -c:v hevc_mediacodec \
 -codec_name OMX.qcom.video.encoder.hevc \
--bitrate_mode 1 \
--b:v 4000K \
+-bitrate_mode 2 \
+-b:v 3000K \
 -g 250 \
 -pix_fmt nv12 \
 -c:a copy \
@@ -185,8 +185,8 @@ while true; do
 ffmpeg -i srt://localhost:1935/mystream \
 -c:v hevc_mediacodec \
 -codec_name OMX.qcom.video.encoder.hevc \
--bitrate_mode 1 \
--b:v 4000K \
+-bitrate_mode 2 \
+-b:v 3000K \
 -g 250 \
 -pix_fmt nv12 \
 -c:a copy \
