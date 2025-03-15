@@ -213,6 +213,8 @@ Run script.
 ./ffmpeg.sh
 ```
 
+To stop running `CTRL` + `C` a couple of times.
+
 ## References
 
 - `IRL Pro` Discord threads
