@@ -159,7 +159,7 @@ ffmpeg -i srt://localhost:8890?streamid=read:mystream \
 -pix_fmt nv12 \
 -c:a copy \
 -f mpegts \
-srt://au.srt.belabox.net:4000?streamid=YOUR_STREAM_ID
+srt://YOUR_SRT_URL
 ```
 
 Different phones can have different codecs, so if that doesn't work try setting `-codec_name` explicitly.
@@ -177,7 +177,7 @@ ffmpeg -i srt://localhost:8890?streamid=read:mystream \
 -pix_fmt nv12 \
 -c:a copy \
 -f mpegts \
-srt://au.srt.belabox.net:4000?streamid=YOUR_STREAM_ID
+srt://YOUR_SRT_URL
 ```
 
 Tweak other `ffmpeg` options to your liking.
@@ -208,7 +208,7 @@ ffmpeg -i srt://localhost:8890?streamid=read:mystream \
 -pix_fmt nv12 \
 -c:a copy \
 -f mpegts \
-srt://au.srt.belabox.net:4000?streamid=YOUR_STREAM_ID
+srt://YOUR_SRT_URL
 echo "FFmpeg exited. Restarting in 5 seconds."
 sleep 5
 done
