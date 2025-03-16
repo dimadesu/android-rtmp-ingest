@@ -232,6 +232,25 @@ Run script.
 
 To stop running `CTRL` + `C` a couple of times.
 
+## Test results (March 2025)
+
+### IRL Pro
+
+Tested HLS overlay in IRL Pro idea a bit more. Overall, it works fine.
+The issue I've noticed is that it's skipping frames randomly here and there for me.
+The same frame is rendered twice, so it has these micro stutters.
+I had to step through frame by frame in YouTube player to see it. Untrained eyes might not notice it.
+I tried to fix it by changing resolutions and bitrate in both IRL Pro and ingest stream - no luck.
+I suspect that's just how overlays work, so I don't think it can be fixed.
+
+### ffmpeg HEVC
+
+As for hardware acceleration for encoding HEVC when ffmpeg and Medicodec - tested that thoroughly too.
+It has issues with playback of stream in OBS and SRT players. It's a little flaky. It sometimes works alright for 1080p, but needs a bunch restarts. Weird.
+With `libx265 -crf 23` I can get somewhat stable 480p stream, that at least is reliably playable in OBS.
+
+This sums state of HEVC with ffmpeg in Termux on Android so far for me.
+
 ## References
 
 - `IRL Pro` Discord threads
