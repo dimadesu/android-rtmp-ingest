@@ -1,6 +1,6 @@
 # RTMP Ingest on Android. RTMP H264 to SRT H265 (aka HEVC)
 
-The goal is to send RTMP stream from an action camera (or any RTMP feed really) to the server running on Android phone and use that a source for a video encoder (running on the same Android phone) to stream it as SRT HEVC.
+The goal is to send RTMP stream from an action camera (or any RTMP feed really) to the server running on Android phone and use that as a source for a video encoder (running on the same Android phone) to stream it as SRT HEVC.
 
 To achieve this we need a server that can run on Android and a video encoder.
 
@@ -12,15 +12,15 @@ Another option is to use `ffmpeg` in Termux. It can do SRT HEVC with no dynamic 
 
 ## Termux
 
-MediaMTX will be running on [Termux](https://termux.dev/en/). Install Termux on your phone. Do not use Google Play version.
+MediaMTX will be running in [Termux](https://termux.dev/en/). Install Termux on your phone. Do not use Google Play version.
 
 Start Termux and copy-paste or type the commands below.
 
-To copy commands open this page in the browser on the phone and tap on commands.
+To copy commands open this page in the browser of your the phone and tap on commands.
 
 To paste into Termux long tap anywhere on Termux terminal view to bring up context menu and choose `Paste`.
 
-If at any time you need a new terminal swipe from the left edge of screen and tap `New session` button.
+If at any time you need a new terminal swipe from the left edge of screen and select `New session` button.
 
 ## MediaMTX
 
@@ -133,7 +133,7 @@ There will be a delay of about 3 seconds between HLS video and phone audio, so y
   ```
 - Setup your `IRL Pro` to stream SRT HEVC.
 - Start your stream in `IRL Pro`.
-- In OBS add audio delay of about 3000 ms. (Note when you test it in OBS delay is not applied to audio monitoring only to recording or stream.)
+- In OBS add audio delay of about 3000 ms. (Note when you test it in OBS delay is not applied to audio monitoring, only to recording or stream.)
 - Done!
 
 ## `ffmpeg`
