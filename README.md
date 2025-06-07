@@ -144,6 +144,8 @@ There will be a delay of about 3 seconds between HLS video and phone audio, so y
 
 ## `ffmpeg`
 
+Alternative to using IRL Pro is to use `ffmpeg` in Termux.
+
 Keep MediaMTX running. Open a new Termux terminal and run `ffmpeg` in it.
 
 Install `ffmpeg`.
@@ -152,7 +154,7 @@ Install `ffmpeg`.
 pkg install ffmpeg
 ```
 
-To encode HEVC with hardware accelation use Mediacodec options. This works on my Samsung S20 FE for example.
+To encode HEVC with hardware accelation use Mediacodec options. This works (* somewhat works, please see test results at the bottom) on my Samsung S20 FE for example.
 
 Try this first (w/o `-codec_name` option):
 
