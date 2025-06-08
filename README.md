@@ -153,7 +153,7 @@ The options are:
   ```
 - Setup your `IRL Pro` to stream SRT HEVC.
 - Start your stream in `IRL Pro`.
-- In OBS add audio delay of about 3000 ms. (Note: when you test it in OBS, delay is not applied to audio monitoring, only to recording or a stream.)
+- If you connect mic directly to the phone add audio delay of about 3000 ms in OBS. (Note: when you test it in OBS, delay is not applied to audio monitoring, only to recording or a stream.)
 - Done!
 
 ## `ffmpeg`
