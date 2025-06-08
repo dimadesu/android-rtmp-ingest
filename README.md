@@ -127,7 +127,7 @@ We'll create an overlay to display HLS in `IRL Pro`. It can cover the whole view
 
 ### Audio
 
-There are different ways to make IRL Pro use audio from RTMP/HLS feed in `IRL Pro`.
+There are different ways to make `IRL Pro` use audio from RTMP/HLS feed in `IRL Pro`.
 
 `IRL Pro` lets us use audio via phone's "audio input". It can use built-in mic, USB audio device, mic connected via 3.5mm port, Bluetooth mic etc.
 
@@ -156,7 +156,7 @@ The options are:
 
 ## `ffmpeg`
 
-Alternative to using IRL Pro is to use `ffmpeg` in Termux.
+Alternative to using `IRL Pro` is to use `ffmpeg` in Termux.
 
 Disclaimer. I did a lot of tests with this option and I had a lot issues, so I'm not recommending it. Test details are at the bottom of the page.
 
@@ -258,11 +258,11 @@ To stop running `CTRL` + `C` a couple of times.
 
 ### IRL Pro
 
-Tested HLS overlay in IRL Pro idea a bit more. Overall, it works fine.
+Tested HLS overlay in `IRL Pro` idea a bit more. Overall, it works fine.
 The issue I've noticed is that it's skipping frames randomly here and there for me.
 The same frame is rendered twice, so it has these micro stutters.
 I had to step through frame by frame in YouTube player to see it. Untrained eyes might not notice it.
-I tried to fix it by changing resolutions and bitrate in both IRL Pro and ingest stream - no luck.
+I tried to fix it by changing resolutions and bitrate in both `IRL Pro` and ingest stream - no luck.
 I suspect that's just how overlays work, so I don't think it can be fixed.
 
 ### ffmpeg HEVC
