@@ -141,7 +141,8 @@ The options are:
 
 ### Setup `IRL Pro`
 
-- Add an overlay in `IRL Pro`. Use HLS feed from MediaMTX as an overlay source URL:
+- Add an overlay in `IRL Pro`. Use HLS feed from MediaMTX as an overlay source URL.
+
   By default it has audio muted.
   ```
   http://localhost:8888/mystream
