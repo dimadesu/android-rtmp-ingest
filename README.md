@@ -145,7 +145,7 @@ The options are:
   ```
   http://localhost:8888/mystream
   ```
-  If you want audio to play via your phone's audio output use this instead:
+  If you want HLS audio to play via your phone's audio output use this instead:
   ```
   http://localhost:8888/mystream?muted=no
   ```
