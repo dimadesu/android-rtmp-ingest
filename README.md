@@ -8,9 +8,7 @@ We'll be using [MediaMTX](https://github.com/bluenviron/mediamtx) as a server (r
 
 [`IRL Pro`](https://irlpro.app) is a great video encoder app. It can stream SRT HEVC with dynamic bitrate and bonding.
 
-Unfortunately, it cannot use audio from an RTMP stream, but it can use audio from a phone audio input or a Bluetooth mic connected to the phone.
-
-(Update 07/06/2025: I was experimenting and found an alternative way to push through the audio from RTMP stream to IRL Pro. The solution described in the doc is still a great option. I'll update the doc soon.)
+You'll have to be a little creative with pushing through the audio.
 
 Another option is to use `ffmpeg` in Termux. It can do SRT HEVC with no dynamic bitrate and no bonding. It uses audio from RTMP stream.
 
@@ -87,7 +85,13 @@ rtmp://IP_OF_YOUR_PHONE:1935/mystream
 
 #### Start the stream
 
-Start streaming your camera to MediaMTX server. If it works it works.
+Start streaming your camera to MediaMTX server.
+
+There are many ways to confirm that it works:
+- Camera app would usually say if it was able to connect.
+- MediaMTX will log a message in its console.
+- You can open HLS url in the phone browser.
+- Etc.
 
 ## (Optional) Configure MediaMTX to auto start
 
@@ -113,29 +117,39 @@ Restart Termux app or create a new terminal session to see it work.
 
 ### Intro
 
-As of March 2025 `IRL Pro` doesn't have RTMP ingest feature, so this is a workaround.
+As of June 2025 `IRL Pro` doesn't have RTMP ingest feature, so this is a workaround.
 
 Big thanks to `Supairyacht` user from `IRL Pro` Discord server for this idea.
 
 We'll be pushing into RTMP ingest of MediaMTX and pulling HLS from MediaMTX. MediaMTX can do this without any extra setup.
 
-HLS is essentially an HTML page with a video in it.
+HLS is kind of an HTML page with a video in it.
 
-We'll create an overlay to display HLS page in `IRL Pro`. It can cover the whole view area if you like.
+We'll create an overlay to display HLS in `IRL Pro`. It can cover the whole view area if you like.
 
 ### Audio
 
-The issue with this idea is that overlays have no audio. `IRL Pro` lets you use audio via phone's audio input or Bluetooth mic connected to the phone.
+There are different ways to make IRL Pro use audio from RTMP/HLS feed in `IRL Pro`.
 
-There will be a delay of about 3 seconds between HLS video and phone audio, so you'll have to fix that in OBS (that has SRT media source).
+`IRL Pro` lets us use audio via phone's "audio input". It can use built-in mic, USB audio device, mic connected via 3.5mm port, Bluetooth mic etc.
+
+The options are:
+- If all you need is a mic you can connect it directly to the phone. There will be a delay of about 3 seconds between HLS video and mic, so you'll have to fix that in OBS (that has SRT media source).
+- Make HLS play audio via phone's "audio output" and record it via "audio input". I recommend getting a USB audio interface or mixer that can do this. These can be:
+  - Rode AI Micro. It is small, light and relatively inexpesive. Connect headphones to audio input with a cable.
+    - Note about all devices that use 3.5mm mic inputs. They all expect very weak mic signal, so set phone audio output to lowest volume first and test to not overload the mic input. Then raise volume slowly. Audio levels can be checked in `IRL Pro`.
+  - Behringer Xenyx 302USB. I just happen to own one. It's relatively big, but records USB output very easily. I saw similar cheaper devices on Amazon.
+  - I think Behringer UCA202 is a great option for this. It is light and cheap. Disclaimer, I don't have one to test, but pretty sure it would work.
+
 
 ### Setup `IRL Pro`
 
 - Add an overlay in `IRL Pro`. Use HLS feed from MediaMTX as an overlay source URL:
+  By default it has audio muted.
   ```
   http://localhost:8888/mystream
   ```
-  Update 07/06/2025: Alternatively, if you want audio from RTMP stream to go through your phone's audio output do:
+  If you want audio to play via your phone's audio output use this instead:
   ```
   http://localhost:8888/mystream?muted=no
   ```
@@ -147,6 +161,8 @@ There will be a delay of about 3 seconds between HLS video and phone audio, so y
 ## `ffmpeg`
 
 Alternative to using IRL Pro is to use `ffmpeg` in Termux.
+
+Disclaimer. I did a lot of tests with this option and I had a lot issues, so I'm not recommending it. Test details are at the bottom of the page.
 
 Keep MediaMTX running. Open a new Termux terminal and run `ffmpeg` in it.
 
