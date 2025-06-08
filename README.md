@@ -137,7 +137,7 @@ The options are:
   - Rode AI Micro. It is small, light and relatively inexpesive. Connect headphones output to mic input with a cable.
     - Note about all devices that use 3.5mm mic inputs. They all expect very weak mic signal, so set phone audio output to lowest volume first and test to not overload the mic input. Then raise volume slowly. Audio levels can be checked in `IRL Pro`.
   - Behringer Xenyx 302USB. I just happen to own one. It's relatively big, but records USB output very easily. I saw similar cheaper devices on Amazon.
-  - I think Behringer UCA202 is a great option for this. It is light and cheap. Disclaimer, I don't have one to test, but pretty sure it will work. Connect audio output to input with a cable.
+  - I think Behringer UCA202 is a great option for this. It is light and cheap. I don't have one to test, but pretty sure it will work. Connect audio output to input with a cable.
 
 ### Setup `IRL Pro`
 
@@ -158,7 +158,7 @@ The options are:
 
 Alternative to using `IRL Pro` is to use `ffmpeg` in Termux.
 
-Disclaimer. I did a lot of tests with this option and I had a lot issues, so I'm not recommending it. Test details are at the bottom of the page.
+I did a lot of tests with this option and I had a lot issues, so I'm not recommending it. Test details are at the bottom of the page.
 
 Keep MediaMTX running. Open a new Termux terminal and run `ffmpeg` in it.
 
