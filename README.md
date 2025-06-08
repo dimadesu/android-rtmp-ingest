@@ -133,7 +133,7 @@ There are different ways to make `IRL Pro` use audio from RTMP/HLS feed.
 
 The options are:
 - If all you need is a mic you can connect it directly to the phone. With this option there will be a delay of about 3 seconds between HLS video and mic, so you'll have to fix that in OBS (that has SRT media source).
-- Make HLS audio play via phone's "audio output" and record it via "audio input". Video and audio should be in sync (maybe a tiny bit off, but it is a as good as it gets). I recommend getting a USB audio interface or mixer that can do this. These can be:
+- Make HLS audio play via phone's "audio output" and record it via "audio input". Video and audio should be in sync (maybe a tiny bit off, but it's a as good as it gets). I recommend getting a USB audio interface or mixer that can do this (and connect it to the phone via USB). These can be:
   - Rode AI Micro. It is small, light and relatively inexpesive. Connect headphones output to mic input with a cable.
     - Note about devices that use 3.5mm mic inputs. They usually expect very weak mic signal. In order to not overload the mic input set phone audio output to lowest volume first and test. Check audio levels in `IRL Pro`. Raise volume slowly and test until it's nice and loud without distorting.
   - Behringer Xenyx 302USB. I just happen to own one. It's relatively big, but records USB output very easily. I saw similar cheaper devices on Amazon.
