@@ -140,6 +140,7 @@ The options are:
     - Note about devices that use 3.5mm mic inputs. They usually expect very weak mic signal. In order to not overload the mic input set phone audio output to lowest volume first and test. Check audio levels in `IRL Pro`. Raise volume slowly and test until it's nice and loud without distorting.
   - Behringer Xenyx 302USB. I just happen to own one. It's relatively big, but records USB output very easily. I saw similar cheaper devices on Amazon.
   - I think Behringer UCA202 is a great option for this. It is light and cheap. I don't have one to test, but pretty sure it will work. Connect audio output to input with a cable.
+  - IK Multimedia iRig Stream audio interface looks pretty cool. Loopback switch should do want we need.
 
 ### Setup `IRL Pro`
 
