@@ -12,6 +12,8 @@ With `IRL Pro` you'll have to be a little creative with pushing through RTMP aud
 
 Another option is to use `ffmpeg` in Termux. It can do SRT HEVC with no dynamic bitrate and no bonding.
 
+Disclaimer. This was mostly tested on my phone Samsung S20 FE.
+
 ## Termux
 
 MediaMTX server will be running in [Termux](https://termux.dev/en/). Install Termux on your phone. Do not use Google Play version.
