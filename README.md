@@ -1,3 +1,5 @@
+_Check out the [video](https://www.youtube.com/watch?v=5H0AZca3nk4) with demo and explanation of how to use this guide._
+
 # RTMP Ingest on Android. RTMP H264 to SRT H265 (aka HEVC)
 
 The goal is to send RTMP stream from an action camera (or any RTMP feed really) to the server running on Android phone and use that as a source for a video encoder (running on the same Android phone) to stream it as SRT HEVC.
@@ -280,6 +282,7 @@ This sums state of HEVC with ffmpeg in Termux on Android so far for me.
 
 ## References
 
+- [Video guide](https://www.youtube.com/watch?v=5H0AZca3nk4) recorded in July 2025
 - `IRL Pro` Discord threads
   - [RTMP Ingest](https://discord.com/channels/996502486535901306/1191179335479087104)
   - [Built-in RTMP Server that can be used as a source](https://discord.com/channels/996502486535901306/1056294460121690132)
