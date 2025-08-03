@@ -127,7 +127,7 @@ Big thanks to `Supairyacht` user from `IRL Pro` Discord server for this idea.
 
 We'll be pushing into RTMP ingest of MediaMTX and pulling HLS from MediaMTX. MediaMTX can do this without any extra setup.
 
-HLS is kind of an HTML page with a video in it.
+Techinically, MediaMTX generates an HTML page with a video player in it, that plays HLS.
 
 We'll create an overlay to display HLS in `IRL Pro`. It can cover the whole view area if you like.
 
